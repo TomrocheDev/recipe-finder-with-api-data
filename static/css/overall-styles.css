@@ -1,0 +1,37 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+:root {
+  --clr-blue: #00b8b1;
+  --clr-red: #de5744;
+  --clr-yellow: #f3c345;
+}
+
+body {
+  min-height: 100vh;
+}
+
+nav {
+  width: 100%;
+  min-height: 55px;
+  background-color: var(--bs-primary-subtle);
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  box-shadow: 2px 1px 5px rgb(92, 92, 92);
+}
+
+.nav-link,
+.navbar-brand {
+  color: rgb(240, 240, 240);
+  transition: 500ms ease;
+}
+
+.navbar-brand {
+  font-family: "Pacifico", cursive;
+}
