@@ -100,6 +100,9 @@
     </div>
 
     <div class="found-recipes">
+      {% if recipes == None %}
+      <div></div>
+      {% else %}
       {% for item in recipes %}
       <div class="card" style="width: 18rem">
         <img
@@ -115,13 +118,16 @@
               <span>Source: {{ item["recipe"]["source"] }}</span> <br />
             </div>
             <div class="card-buttons">
-              <button class="btn btn-outline-danger">Visit site</button>
+              <a href="{{ item['recipe']['url'] }}">
+                <button class="visit-btn btn btn-outline-danger">Visit site</button>
+              </a>
               <button class="btn btn-danger">Save recipe</button>
             </div>
           </p>
         </div>
       </div>
       {% endfor %}
+      {% endif %}
     </div>
 
     <script
