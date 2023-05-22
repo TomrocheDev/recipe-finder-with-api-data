@@ -1,0 +1,62 @@
+/* Carousel */
+.carousel-inner {
+  max-height: 50vh;
+  overflow: hidden;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.459);
+}
+
+.carousel-item {
+  height: 50vh;
+}
+
+.carousel-item img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* find recipes form */
+.find-recipes-form-container {
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 9rem 2rem;
+  gap: 10px;
+}
+
+.recipe-form-header {
+  font-family: "Pacifico", cursive;
+}
+
+.find-recipes-form {
+  width: 40%;
+}
+
+/* recipe cards */
+.found-recipes {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  row-gap: 3.5rem;
+}
+
+.card {
+  min-width: 18rem;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 5px;
+}

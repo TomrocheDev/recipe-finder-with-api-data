@@ -1,11 +1,16 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, request, render_template, redirect, url_for, session
+from functions.functions import get_recipes
 
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def home():
-    return render_template("index.html")
+    data = None
+    if request.method == "POST":
+        user_input = request.form["user-input"]
+        data = get_recipes(user_input)
+    return render_template("index.html", recipes=data)
 
 
 if __name__ == "__main__":
