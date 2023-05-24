@@ -101,27 +101,26 @@
 
     <div class="found-recipes">
       {% if recipes == None %}
-      <div></div>
       {% else %}
       {% for item in recipes %}
-      <div class="card" style="width: 18rem">
+      <div class="card card-container" style="width: 18rem">
         <img
           src="{{ item['recipe']['image'] }}"
           class="card-img-top"
           alt="Picture of recipe" />
         <div class="card-body">
-          <h5>{{ item["recipe"]["label"] }}</h5>
+          <h5 class="card-title">{{ item["recipe"]["label"] }}</h5>
           <p class="card-text">
             <div class="recipe-details">
-              <span>Calories: {{ item["recipe"]["calories"] }}</span> <br />
-              <span>Servings: {{ item["recipe"]["yield"] }}</span> <br />
-              <span>Source: {{ item["recipe"]["source"] }}</span> <br />
+              <span>Calories: </span><span class="value-calories">{{ item["recipe"]["calories"] }}</span> <br />
+              <span>Servings: </span><span class="value-servings">{{ item["recipe"]["yield"] }}</span> <br />
+              <span>Source: </span><span class="value-source">{{ item["recipe"]["source"] }}</span> <br />
             </div>
             <div class="card-buttons">
-              <a href="{{ item['recipe']['url'] }}">
+              <a class="card-link" href="{{ item['recipe']['url'] }}" target="_blank">
                 <button class="visit-btn btn btn-outline-danger">Visit site</button>
               </a>
-              <button class="btn btn-danger">Save recipe</button>
+              <button class="btn btn-danger save-btn save-btn-{{ loop.index }}">Save recipe</button>
             </div>
           </p>
         </div>
@@ -134,5 +133,6 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"></script>
+      <script src="../static/scripts/home.js"></script>
   </body>
 </html>
