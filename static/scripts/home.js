@@ -25,23 +25,28 @@ document.querySelector("body").addEventListener("click", (event) => {
 
         // Define local storage variables
         let savedRecipes = [];
-        let recipeObject = {};
+        let recipeObject = {
+          title: title,
+          calories: calories,
+          servings: servings,
+          source: source,
+          image: image,
+          link: link,
+        };
 
-        // Check if a storage of recipes exists
         if (!localStorage["savedRecipes"]) {
           localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
-        } else {
-          recipeObject = {
-            title: title,
-            calories: calories,
-            servings: servings,
-            source: source,
-            image: image,
-            link: link,
-          };
-
-          console.log(recipeObject);
         }
+
+        // Get old recipe list
+        let oldRecipeList = JSON.parse(localStorage["savedRecipes"]);
+
+        // Push recipe object into old list and convert to new list
+        oldRecipeList.push(recipeObject);
+        newRecipeList = oldRecipeList;
+
+        // Push new list into storage
+        localStorage.setItem("savedRecipes", JSON.stringify(newRecipeList));
 
         // Remove "clicked" class from card
         clickedCard.classList.remove("clicked");
