@@ -25,6 +25,7 @@
   align-items: center;
   padding: 9rem 2rem;
   gap: 10px;
+  margin-top: 2rem;
 }
 
 .recipe-form-header {
@@ -76,6 +77,10 @@
 }
 
 @media only screen and (max-width: 800px) {
+  .find-recipes-form-container {
+    margin-top: 1rem;
+  }
+
   .find-recipes-form {
     width: 100%;
   }
