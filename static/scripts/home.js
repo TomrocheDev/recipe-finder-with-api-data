@@ -54,7 +54,7 @@ document.querySelector("body").addEventListener("click", (event) => {
         successContainer.style.top = "2rem";
 
         setTimeout(() => {
-          successContainer.style.top = "-5rem";
+          successContainer.style.top = "-10rem";
         }, 3000);
 
         // Remove "clicked" class from card
