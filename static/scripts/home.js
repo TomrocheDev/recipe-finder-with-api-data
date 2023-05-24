@@ -48,6 +48,15 @@ document.querySelector("body").addEventListener("click", (event) => {
         // Push new list into storage
         localStorage.setItem("savedRecipes", JSON.stringify(newRecipeList));
 
+        // Display success message
+        const successContainer = document.querySelector(".alert-success");
+        successContainer.innerHTML = `${title} is successfully added to your saved recipes!`;
+        successContainer.style.top = "2rem";
+
+        setTimeout(() => {
+          successContainer.style.top = "-5rem";
+        }, 3000);
+
         // Remove "clicked" class from card
         clickedCard.classList.remove("clicked");
       }
