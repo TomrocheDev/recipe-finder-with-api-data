@@ -13,5 +13,10 @@ def home():
     return render_template("index.html", recipes=data)
 
 
+@app.route("/saved_recipes")
+def saved_recipes():
+    return render_template("saved-recipes.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5003)

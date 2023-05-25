@@ -1,0 +1,13 @@
+.header {
+  font-family: "Pacifico", cursive;
+  width: 100%;
+  text-align: center;
+  padding: 4rem 0 2rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .alert-success {
+    width: 80%;
+    left: 10%;
+  }
+}
