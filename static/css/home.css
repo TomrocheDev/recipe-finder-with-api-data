@@ -23,7 +23,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 9rem 2rem;
+  padding: 9rem 2rem 3rem;
   gap: 10px;
   margin-top: 2rem;
 }
@@ -64,6 +64,18 @@
 
 .visit-btn {
   width: 100%;
+}
+
+/* Pagination */
+.pagination-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.pagination-container:first-of-type {
+  padding: 0;
 }
 
 @media only screen and (max-width: 800px) {

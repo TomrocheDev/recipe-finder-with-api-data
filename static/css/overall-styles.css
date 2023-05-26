@@ -5,12 +5,6 @@
   font-family: "Open Sans", sans-serif;
 }
 
-:root {
-  --clr-blue: #00b8b1;
-  --clr-red: #de5744;
-  --clr-yellow: #f3c345;
-}
-
 body {
   min-height: 100vh;
   position: relative;
@@ -44,6 +38,7 @@ footer {
   position: absolute;
   bottom: 1rem;
   opacity: 30%;
+  user-select: none;
 }
 
 /* Succes message */

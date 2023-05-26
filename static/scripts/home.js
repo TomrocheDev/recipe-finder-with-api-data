@@ -1,65 +1,58 @@
-// Detect click on "save" button and get needed data to save
-document.querySelector("body").addEventListener("click", (event) => {
-  let click = event.target;
-  if (click.closest("button").classList.contains("save-btn")) {
-    let clickedCard = click.closest(".card-container");
-    clickedCard.classList.add("clicked");
+// Handle save when a save button is clicked
+// Get the container element
+const foundRecipes = document.querySelector(".found-recipes");
 
-    // Loop through al cards and check for "clicked" class
-    const allCards = document.querySelectorAll(".card");
-    const allTitles = document.querySelectorAll(".card-title");
-    const allCalories = document.querySelectorAll(".value-calories");
-    const allServings = document.querySelectorAll(".value-servings");
-    const allSources = document.querySelectorAll(".value-source");
-    const allImages = document.querySelectorAll(".card-img-top");
-    const allLinks = document.querySelectorAll(".card-link");
+// Attach eventlistener in found-recipes container
+foundRecipes.addEventListener("click", (event) => {
+  // Determine which button is clicked
+  let clickedButton = event.target;
 
-    for (let index = 0; index < allCards.length; index++) {
-      if (allCards[index].classList.contains("clicked")) {
-        let title = allTitles[index].innerHTML;
-        let calories = allCalories[index].innerHTML;
-        let servings = allServings[index].innerHTML;
-        let source = allSources[index].innerHTML;
-        let image = allImages[index].getAttribute("src");
-        let link = allLinks[index].getAttribute("href");
+  let list = Array.from(document.querySelectorAll(".save-btn"));
+  let index = list.indexOf(clickedButton);
 
-        // Define local storage variables
-        let savedRecipes = [];
-        let recipeObject = {
-          title: title,
-          calories: calories,
-          servings: servings,
-          source: source,
-          image: image,
-          link: link,
-        };
+  // Declare variables
+  let title = document.querySelector(`.card-title-${index + 1}`).innerHTML;
+  let calories = document.querySelector(`.calories-${index + 1}`).innerHTML;
+  let servings = document.querySelector(`.servings-${index + 1}`).innerHTML;
+  let source = document.querySelector(`.source-${index + 1}`).innerHTML;
+  let image = document.querySelector(`.image-${index + 1}`).getAttribute("src");
+  let link = document.querySelector(`.link-${index + 1}`).getAttribute("href");
 
-        if (!localStorage["savedRecipes"]) {
-          localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
-        }
+  // Create object
+  let recipeObject = {
+    title: title,
+    calories: calories,
+    servings: servings,
+    source: source,
+    image: image,
+    link: link,
+  };
 
-        // Get old recipe list
-        let oldRecipeList = JSON.parse(localStorage["savedRecipes"]);
+  // Set empty recipe storage array
+  let savedRecipes = [];
 
-        // Push recipe object into old list and convert to new list
-        oldRecipeList.push(recipeObject);
-        newRecipeList = oldRecipeList;
-
-        // Push new list into storage
-        localStorage.setItem("savedRecipes", JSON.stringify(newRecipeList));
-
-        // Display success message
-        const successContainer = document.querySelector(".alert-success");
-        successContainer.innerHTML = `${title} is successfully added to your saved recipes!`;
-        successContainer.style.top = "2rem";
-
-        setTimeout(() => {
-          successContainer.style.top = "-10rem";
-        }, 3000);
-
-        // Remove "clicked" class from card
-        clickedCard.classList.remove("clicked");
-      }
-    }
+  // Check if local storage object exists
+  if (!localStorage["savedRecipes"]) {
+    localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
   }
+
+  // Get old recipe list
+  let oldRecipeList = JSON.parse(localStorage["savedRecipes"]);
+
+  // Push recipe object into old list and convert to new list
+  oldRecipeList.push(recipeObject);
+  newRecipeList = oldRecipeList;
+
+  // Push new list into storage
+  localStorage.setItem("savedRecipes", JSON.stringify(newRecipeList));
+
+  // Display success message
+  const successContainer = document.querySelector(".alert-success");
+  successContainer.innerHTML = `${title} is successfully added to your saved recipes!`;
+  successContainer.style.top = "2rem";
+
+  // Undo animation by restoring elements place
+  setTimeout(() => {
+    successContainer.style.top = "-10rem";
+  }, 3000);
 });

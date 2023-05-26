@@ -34,7 +34,7 @@
     </div>
     <nav class="navbar navbar-expand-lg bg-danger">
       <div class="container-fluid brand-container">
-        <a class="navbar-brand" href="#">What's Cooking!</a>
+        <a class="navbar-brand" href="/">What's Cooking!</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -47,9 +47,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Search Recipes</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="/saved_recipes">Saved Recipes</a>
             </li>
@@ -102,6 +99,13 @@
       </form>
     </div>
 
+    {% if show_next %}
+    <div class="pagination-container">
+      <form class="pagination" action="/next_page">
+        <button class="next-page btn btn-outline-danger">Next Page</button>
+      </form>
+    </div>
+    {% endif %}
     <div class="found-recipes">
       {% if recipes == None %}
       {% else %}
@@ -109,18 +113,18 @@
       <div class="card card-container" style="width: 18rem">
         <img
           src="{{ item['recipe']['image'] }}"
-          class="card-img-top"
+          class="card-img-top image-{{ loop. index }}"
           alt="Picture of recipe" />
         <div class="card-body">
-          <h5 class="card-title">{{ item["recipe"]["label"] }}</h5>
+          <h5 class="card-title card-title-{{ loop.index }}">{{ item["recipe"]["label"] }}</h5>
           <p class="card-text">
             <div class="recipe-details">
-              <span>Calories: </span><span class="value-calories">{{ item["recipe"]["calories"] }}</span> <br />
-              <span>Servings: </span><span class="value-servings">{{ item["recipe"]["yield"] }}</span> <br />
-              <span>Source: </span><span class="value-source">{{ item["recipe"]["source"] }}</span> <br />
+              <span>Calories: </span><span class="calories-{{ loop. index }}">{{ item["recipe"]["calories"] }}</span> <br />
+              <span>Servings: </span><span class="servings-{{ loop. index }}">{{ item["recipe"]["yield"] }}</span> <br />
+              <span>Source: </span><span class="source-{{ loop. index }}">{{ item["recipe"]["source"] }}</span> <br />
             </div>
             <div class="card-buttons">
-              <a class="card-link" href="{{ item['recipe']['url'] }}" target="_blank">
+              <a class="card-link link-{{ loop.index }}" href="{{ item['recipe']['url'] }}" target="_blank">
                 <button class="visit-btn btn btn-outline-danger">Visit site</button>
               </a>
               <button class="btn btn-danger save-btn save-btn-{{ loop.index }}">Save recipe</button>
@@ -130,10 +134,14 @@
       </div>
       {% endfor %}
       {% endif %}
+    </div>
+    {% if show_next %}
+    <div class="pagination-container">
       <form class="pagination" action="/next_page">
         <button class="next-page btn btn-outline-danger">Next Page</button>
       </form>
     </div>
+    {% endif %}
 
     <footer>An application created by Tom Roche</footer>
 
