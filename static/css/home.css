@@ -45,27 +45,6 @@
   row-gap: 3.5rem;
 }
 
-.card {
-  min-width: 18rem;
-}
-
-.card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.card-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 5px;
-}
-
-.visit-btn {
-  width: 100%;
-}
-
 /* Pagination */
 .pagination-container {
   width: 100%;
