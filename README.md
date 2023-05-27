@@ -1,6 +1,8 @@
-## What's Cooking?
+# What's Cooking?
 
 What's Cooking is a web application designed to make your culinary adventures easier and more enjoyable. With its two main functionalities, searching for recipes and saving them for later, you'll always have access to a world of delicious dishes.
+
+## Functionalities
 
 1. **Search for Recipes:** With What's Cooking, you can explore a vast collection of recipes from various sources. Simply enter keywords, ingredients, or dish names, and let the app find the perfect recipe for you. Whether you're looking for a quick weekday dinner, a healthy breakfast option, or a decadent dessert, What's Cooking has you covered.
 
