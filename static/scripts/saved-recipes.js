@@ -27,3 +27,21 @@ savedRecipesLS.forEach((element) => {
 
   savedRecipesContainer.append(newCard);
 });
+
+// Make deleting recipes possible
+console.log(savedRecipesLS);
+savedRecipesContainer.addEventListener("click", (event) => {
+  // Get index of clicked button
+  clickedButton = event.target;
+  const savedItemList = Array.from(document.querySelectorAll(".delete-btn"));
+  let deleteIndex = savedItemList.indexOf(clickedButton);
+
+  // Remove indexed position from savedRecipes
+  savedRecipesLS.splice(deleteIndex, 1); // savedRecipes is declared in line 7
+
+  // Set savedRecipes back in local storage
+  localStorage.setItem("savedRecipes", JSON.stringify(savedRecipesLS));
+
+  // Reload page after deletion
+  document.location.reload();
+});
