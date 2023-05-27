@@ -33,15 +33,17 @@ console.log(savedRecipesLS);
 savedRecipesContainer.addEventListener("click", (event) => {
   // Get index of clicked button
   clickedButton = event.target;
-  const savedItemList = Array.from(document.querySelectorAll(".delete-btn"));
-  let deleteIndex = savedItemList.indexOf(clickedButton);
+  if (clickedButton.classList.contains("delete-btn")) {
+    const savedItemList = Array.from(document.querySelectorAll(".delete-btn"));
+    let deleteIndex = savedItemList.indexOf(clickedButton);
 
-  // Remove indexed position from savedRecipes
-  savedRecipesLS.splice(deleteIndex, 1); // savedRecipes is declared in line 7
+    // Remove indexed position from savedRecipes
+    savedRecipesLS.splice(deleteIndex, 1); // savedRecipes is declared in line 7
 
-  // Set savedRecipes back in local storage
-  localStorage.setItem("savedRecipes", JSON.stringify(savedRecipesLS));
+    // Set savedRecipes back in local storage
+    localStorage.setItem("savedRecipes", JSON.stringify(savedRecipesLS));
 
-  // Reload page after deletion
-  document.location.reload();
+    // Reload page after deletion
+    document.location.reload();
+  }
 });
