@@ -1,12 +1,11 @@
-// Render saved items in "saved-recipes-container"
+// Overall variables
+let savedRecipesLS = JSON.parse(localStorage["savedRecipes"]) || [];
 const savedRecipesContainer = document.querySelector(
   ".saved-recipes-container"
 );
 
-// Get local storage data
-let savedRecipesLS = JSON.parse(localStorage["savedRecipes"]) || [];
-
-savedRecipesLS.forEach((element) => {
+// Create function for rendering a card
+function renderCard(container, element) {
   let newCard = document.createElement("div");
   newCard.classList.add("card");
   newCard.setAttribute("style", "width: 18rem;");
@@ -48,7 +47,12 @@ savedRecipesLS.forEach((element) => {
                 <button class="btn btn-danger delete-btn">Delete recipe</button>
         </div>`;
 
-  savedRecipesContainer.append(newCard);
+  container.append(newCard);
+}
+
+// Render saved items in "saved-recipes-container"
+savedRecipesLS.forEach((element) => {
+  renderCard(savedRecipesContainer, element);
 });
 
 // Make deleting and rating recipes possible
@@ -92,3 +96,21 @@ savedRecipesContainer.addEventListener("click", (event) => {
     });
   }
 });
+
+// Create function for filtering found recipes
+function filterFoundRecipes() {
+  const value = document.getElementById("found-recipes-filter").value;
+  savedRecipesContainer.innerHTML = "";
+
+  if (value == "reset") {
+    savedRecipesLS.forEach((element) => {
+      renderCard(savedRecipesContainer, element);
+    });
+  } else {
+    savedRecipesLS.forEach((element) => {
+      if (element.marked == value) {
+        renderCard(savedRecipesContainer, element);
+      }
+    });
+  }
+}

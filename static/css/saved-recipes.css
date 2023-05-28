@@ -18,6 +18,28 @@
   margin: 10px 0 0;
 }
 
+.filter-field {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  height: 40px;
+}
+
+.filter-field label {
+  width: 20%;
+  margin: 2% 0 0 0;
+  text-align: right;
+}
+
+.filter-field select {
+  min-width: 20%;
+  max-width: 25%;
+  margin: 2% 10% 0 0;
+  font-size: 12px;
+}
+
 .saved-recipes-container {
   padding: 2rem;
   display: flex;
@@ -49,5 +71,21 @@
 
   .header p {
     font-size: 1rem;
+  }
+
+  .filter-field {
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+  }
+  .filter-field label {
+    width: 15%;
+    margin: 0;
+  }
+
+  .filter-field select {
+    width: 40%;
+    margin: 0;
+    font-size: 12px;
   }
 }

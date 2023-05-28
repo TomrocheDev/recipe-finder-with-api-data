@@ -63,6 +63,19 @@
       <p>Discover delicious recipes for every occasion</p>
     </div>
 
+    <div class="filter-field">
+      <label for="found-recipes-filter">Filter on: </label>
+      <select
+        class="form-select"
+        id="found-recipes-filter"
+        onchange="filterFoundRecipes();">
+        <option value="reset" selected>No filter selected</option>
+        <option value="Delicious!">Delicious!</option>
+        <option value="Liked it">Liked it</option>
+        <option value="Will try it again">Will try again</option>
+        <option value="Did not like it">Did not like</option>
+      </select>
+    </div>
     <div class="saved-recipes-container"></div>
 
     <footer>An application created by Tom Roche</footer>
