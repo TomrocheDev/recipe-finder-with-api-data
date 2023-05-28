@@ -11,4 +11,4 @@ With What's Cooking, you can say goodbye to endless searching and bookmark clutt
 
 ## See the app working!
 
-https://www.tomrochedev.pythonanywhere.com
+tomrochedev.pythonanywhere.com
