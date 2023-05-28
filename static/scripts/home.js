@@ -26,6 +26,7 @@ foundRecipes.addEventListener("click", (event) => {
     source: source,
     image: image,
     link: link,
+    marked: "Not marked",
   };
 
   // Set empty recipe storage array

@@ -13,23 +13,45 @@ savedRecipesLS.forEach((element) => {
 
   newCard.innerHTML = `
         <img src="${element.image}" class="card-img-top">
+        <div class="btn-group dropup">
+            <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Mark
+            </button>
+            <ul class="dropdown-menu dropdown-menu-mark">
+                <li class="dropdown-item">
+                    <button class="btn">Delicious!</button>
+                </li>
+                <li class="dropdown-item">
+                    <button class="btn">Liked it</button>
+                </li>
+                <li class="dropdown-item">
+                    <button class="btn">Will try it again</button>
+                </li>
+                <li class="dropdown-item">
+                    <button class="btn">Did not like it</button>
+                </li>
+            </ul>
+        </div>
         <div class="card-body">
             <h5 class="card-title">${element.title}</h5>
             <p class="card-text">
-                <span class="calories">Calories: ${element.calories}</span> <br />
-                <span class="servings">Servings: ${element.servings}</span><br />
+                <span class="calories">Calories: ${(
+                  parseFloat(element.calories) / parseFloat(element.servings)
+                ).toFixed(2)} p.p.</span> <br />
                 <span class="source">Source: ${element.source}</span><br />
+                <span>Marked as: ${element.marked}</span>
             </p>
             <div class="card-buttons">
-                <a href="${element.link}" class="btn btn-outline-danger visit-btn" target="_blank">Visit site</a>
+                <a href="${
+                  element.link
+                }" class="btn btn-outline-danger visit-btn" target="_blank">Visit site</a>
                 <button class="btn btn-danger delete-btn">Delete recipe</button>
         </div>`;
 
   savedRecipesContainer.append(newCard);
 });
 
-// Make deleting recipes possible
-console.log(savedRecipesLS);
+// Make deleting and rating recipes possible
 savedRecipesContainer.addEventListener("click", (event) => {
   // Get index of clicked button
   clickedButton = event.target;
@@ -45,5 +67,28 @@ savedRecipesContainer.addEventListener("click", (event) => {
 
     // Reload page after deletion
     document.location.reload();
+  } else if (clickedButton.classList.contains("dropdown-toggle")) {
+    // Get index of clicked btn
+    const allBtns = Array.from(document.querySelectorAll(".dropdown-toggle"));
+    let index = allBtns.indexOf(clickedButton);
+
+    // Create array from all dropdown menu's
+    const allMenus = Array.from(
+      document.querySelectorAll(".dropdown-menu-mark")
+    );
+
+    // Attach eventlistener to clicked menu to check the clicked value inside the menu
+    allMenus[index].addEventListener("click", (event) => {
+      let insideMenuValue = event.target.innerText;
+
+      // Edit recipe in local storage
+      savedRecipesLS[index].marked = insideMenuValue;
+
+      // Save edited recipe to localstorage
+      localStorage.setItem("savedRecipes", JSON.stringify(savedRecipesLS));
+
+      // Reload page after marking
+      document.location.reload();
+    });
   }
 });

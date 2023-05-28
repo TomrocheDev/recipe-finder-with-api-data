@@ -27,6 +27,16 @@
   padding-bottom: 5rem;
 }
 
+.card {
+  position: relative;
+}
+
+.dropup {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+}
+
 @media only screen and (max-width: 800px) {
   .alert-success {
     width: 80%;
